@@ -1,0 +1,39 @@
+<div class="container" >
+<div class="card border-primary mb-3">
+  <div class="card-header"> <a routerLink= "/contacts" class="text-decoration-none"> Contacto</a></div>
+
+  <div class="card-body">
+    <form>
+      <div class="form-group row">
+        <label class="col-form-label col-sm-2" for="firstName">Nombre</label>
+        <div class="col-sm-6">
+          <input type="text" name="firstName" [(ngModel)]="contact.firstName" />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-form-label col-sm-2" for="lastName">Apellido</label>
+        <div class="col-sm-6">
+          <input type="text" name="lastName" [(ngModel)]="contact.lastName" />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-form-label col-sm-2" for="initDate">Nacimiento</label>
+        <div class="col-sm-6">
+          <input type="date" name="initDate" [(ngModel)]="contact.initDate" />
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-6">
+        <button class="btn btn-primary" (click)="create()" *ngIf="!contact.id; else editBt">Crear</button>
+
+        <ng-template #editBt>
+          <button type="button" class="btn btn-outline-primary" (click)="update()">Actualizar</button>
+        </ng-template>
+    </div>
+      </div>
+    </form>
+  </div>
+</div>
+</div>

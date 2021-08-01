@@ -1,0 +1,41 @@
+<div class='container'>
+    <div class='card border-primary mb-3'>
+        <div class='card header'>AGENDA</div>
+            <div class='card boby text-primary'>
+                <h5 class='card-title'>Listado de Contactos</h5>
+                <div *ngIf="contacts?.length==0" class="alert alert-info">
+                    SIN REGISTROS
+                </div>
+                <table class='table table-bordered table-striped' >
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Nacimiento</th>
+                            <th>Editar</th>
+                            <th>Eliminar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor='let contact of contacts'>
+                            <td>{{contact.firstName}}</td>
+                            <td>{{contact.lastName}}</td>
+                            <td>{{contact.initDate}}</td>
+                            <td><button type="button" class="btn btn-outline-primary" [routerLink]="['/editcontact',contact.id]">Editar</button></td>
+                            <td><button type="button" class="btn btn-outline-danger" (click)='delete(contact)'>Eliminar</button></td>
+
+
+                        </tr>
+                    </tbody>
+
+
+                </table>
+                
+
+                <a routerLink= "/addcontacts">
+                    <button class="btn btn-primary" >Agregar Contacto</button>
+
+                </a>
+        </div>
+    </div>
+</div>
