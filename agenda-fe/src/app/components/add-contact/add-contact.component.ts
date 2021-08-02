@@ -14,9 +14,9 @@ export class AddContactComponent implements OnInit {
   
   public contact:Contact=new Contact();
 
-  constructor(private _contactService:ContactService,
-              private _router:Router,
-              private _activatedRoute:ActivatedRoute) { }
+  constructor(public _contactService:ContactService,
+              public _router:Router,
+              public _activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.loadContact();

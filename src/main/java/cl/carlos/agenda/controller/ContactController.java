@@ -7,9 +7,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
-@CrossOrigin(origins = {"http://localhost:4200"})
+@CrossOrigin(origins = {"http://localhost:4200", "*"})
 @RestController
 @RequestMapping("api/")
 public class ContactController {
@@ -25,9 +28,19 @@ public class ContactController {
     }
 
     @GetMapping("/contacts/{id}")
-    public ResponseEntity<Contact>show(@PathVariable Long id){
+    public ResponseEntity<?>show(@PathVariable Long id){
         Contact contact=contactService.findById(id);
+        Map<String, Object> response=new HashMap<>();
+        if(contact==null){
+            response.put("mensaje","El contacto ID: ".concat(id.toString().concat(" no existe.")));
+            return new ResponseEntity<Map<String,Object>>(response,HttpStatus.NOT_FOUND);
+
+        }
+
+
         return new ResponseEntity<Contact>(contact, HttpStatus.OK);
+
+
     }
 
     @PostMapping("/contacts")

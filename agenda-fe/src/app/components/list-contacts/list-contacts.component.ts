@@ -13,7 +13,7 @@ export class ListContactsComponent implements OnInit {
 
   public contacts:Contact[]=[];
 
-  constructor(private _contactService:ContactService) { }
+  constructor(public _contactService:ContactService) { }
 
   ngOnInit(): void {
     this._contactService.getContacts().subscribe(
